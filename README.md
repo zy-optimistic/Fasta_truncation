@@ -1,7 +1,9 @@
 # Zhnag-Yong
 Truncate part of a sequence and print with 60 bases a line.
 
-Command : perl seq_truncation.pl file1 file2 name_of_sequence num1:num2.
+Command : 
+
+perl seq_truncation.pl file1 file2 name_of_sequence num1:num2.
 
 
 Parameters :

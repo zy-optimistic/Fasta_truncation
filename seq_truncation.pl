@@ -1,5 +1,6 @@
-#! usr/bin/perl -w
+#! /usr/bin/perl -w
 use strict;
+
 open IN , $ARGV[0] or die "There is something wrong : $!";
 open OUT , "> $ARGV[1]";
 

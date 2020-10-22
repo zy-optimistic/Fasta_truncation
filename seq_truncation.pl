@@ -1,27 +1,29 @@
-#! /usr/bin/perl -w
+#! usr/bin/perl -w
 use strict;
-
 open IN , $ARGV[0] or die "There is something wrong : $!";
 open OUT , "> $ARGV[1]";
 
 my $id;
+my $seq;
 my %hash;
 
+$/ = ">";
 while (<IN>){
 	chomp;
-	if (/^>(.*?)\s+/){
+	
+	if (/^($ARGV[2])/){
 		$id = $1;
-	}else {
-		$hash{$id} .= $_;
+		$_ =~ s/($id)(.*?)\n|\n//g;
+		$seq = $_;
 	}
 }
 
 my @range = split /:/ , $ARGV[3];
 
-if (exists $hash{$ARGV[2]}){
-	my $str = substr ($hash{$ARGV[2]} , ($range[0] - 1) , ($range[1] - $range[0] + 1));
+if (defined $seq){
+	my $str = substr ($seq , ($range[0] - 1) , ($range[1] - $range[0] + 1));
 	
-	print OUT ">$ARGV[2]\n";
+	print OUT ">$id\n";
 
 	my $start = 0;
 	my $line;
